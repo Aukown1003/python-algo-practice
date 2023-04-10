@@ -31,3 +31,27 @@ print('hi' * 3 + 'mike')
 s = ('aaaaaaaaaaaaaaaaaaaaaaaa'
      'bbbbbbbbbbbbbbbbbbbbbbbb')
 print(s)
+
+word = 'python'
+# ワードの[n]番目を表示
+print(word[0])
+# 最後は-1で指定
+print(word[-1])
+# 1番目から2文字など指定もできる
+print(word[0:2])
+print(word[:2])
+print(word[2:])
+# 部分的に入れ替えたい場合
+word = 'j' + word[1:]
+print(word)
+
+s = 'my name is yu'
+print(s)
+is_start = s.startswith('my')
+print(is_start)
+
+print(s.find('yu'))
+print(s.count('my'))
+
+x = str('test')
+print(type(x))
