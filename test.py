@@ -55,4 +55,38 @@ print(s.count('my'))
 
 x = str('test')
 print(type(x))
-
+print("#################")
+# 以下勉強
+# practice1-2
+# 標準出力を用いて、1 行目に 1 を、 2 行目に 2 を、 3 行目に 3 を表示するプログラムを作成してください。
+print("1-2の答えは")
+print(1)
+print(2)
+print(3)
+# もしくは
+print("""
+1
+2
+3
+""")
+print("#################")
+# practice1-3
+# 27182 を 818 で割った余りを表示するプログラムを作成してください。
+numerator = 27182 # 分子
+denominator = 818 # 分母
+remainder = numerator % denominator
+print("1-3の答えは" + str(remainder))
+print("#################")
+# practice1-4
+# 314×(159+265)−358 の計算結果を出力するプログラムを作成してください。
+ans = 314*(159+265)-358
+print("1-4の答えは" + str(ans))
+print("#################")
+# practice1-5
+# 1 日は 24 時間、 1 時間は 60 分、1 分は 60 秒です。
+# 1 日は何秒かを計算し、整数で出力するプログラムを作成してください。
+day = 24
+hour = 60
+second = 60
+total_second = second * hour * day
+print("1-5の答えは" + str(total_second))
