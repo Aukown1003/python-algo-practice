@@ -227,3 +227,122 @@ print(s_list) #['s', 'a', 'f', 'a']のような感じ
 s_list[N-1], s_list[M-1] = s_list[M-1], s_list[N-1] #文字の代入n番目とm番目を=の右側の値で代入
 result = ''.join(s_list) #['s', 'a', 'f', 'a']を合体
 print(result)
+
+print("#################")
+# practice3
+# 入力を整数型として受け取る
+N = int(input())
+# 入力を整数型配列として受け取る
+A = list(map(int, input().split()))
+
+print("#################")
+# practice3 3-1
+N = int(input())
+A = list(map(int, input().split()))
+ans = 0
+for item in A:
+     ans += item
+print(ans)
+
+print("#################")
+# practice3 3-2
+N = int(input())
+A = list(map(int, input().split()))
+ans = 1
+for item in A:
+    ans *= item
+print(ans)
+
+print("#################")
+# practice3 3-3
+N = int(input())
+A = list(map(int, input().split()))
+for item in A:
+     print(item%10)
+
+print("#################")
+# practice3 3-4
+N = int(input())
+A = list(map(int, input().split()))
+for item in A:
+     if item % 3 == 0:
+          print(item)
+
+print("#################")
+# practice3 3-5
+N = int(input())
+A = list(map(int, input().split()))
+A.reverse()
+for item in A:
+     print(item)
+
+N = int(input())
+A = list(map(int, input().split()))
+for item in reversed(A): #reverseで反転できる
+    print(item)
+
+print("#################")
+# practice3 3-6
+N = int(input())
+A = list(map(int, input().split()))
+print(int(sum(A)/N))
+print(sum(A) // N)
+
+# intで整数型に、sumで合計を、/Nで平均を
+
+N = int(input()) # 入力を整数型として受け取る
+A = list(map(int, input().split())) # 入力を整数型配列として受け取る
+sum = 0 # 総和を格納する変数
+for item in A: # A の各要素に対して処理を行う
+    sum += item
+ans = sum // N # 配列の平均値を求める
+print(ans)
+
+print("#################")
+# practice3 3-7
+N = int(input())
+A = list(map(int, input().split()))
+print(min(A))
+
+print("#################")
+# practice3 3-8
+N = int(input())  # 入力を整数型として受け取る
+A = [""] * N  # 空の配列をN個作る。N = 3 ["","",""]
+for i in range(N):  # range(N) は 0 から N-1 までの整数を生成する
+    A[i] = input()  # 入力を文字列型配列として受け取る
+ans = 0 # 答え
+for item in A: # A の各要素の長さを足し合わせる
+    ans += len(item)
+print(ans)
+
+print("#################")
+# practice3 3-9
+N = int(input())
+A = [""] * N
+for i in range(N):
+     A[i] = input()
+ans = ""
+for item in A:
+     ans += item[0]
+print(ans)
+
+print("#################")
+# practice3 3-10
+N = int(input())
+# A = [input() for i in range(N)] とも書ける
+A = [""] * N
+for i in range(N):
+     A[i] = input()
+
+left_count = 0
+for word in A:
+     if word == "left":
+          left_count += 1
+
+right_count = N - left_count
+if left_count > right_count:
+     print("left")
+elif left_count < right_count:
+     print("right")
+else:
+     print("same")
