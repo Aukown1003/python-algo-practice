@@ -346,3 +346,51 @@ elif left_count < right_count:
      print("right")
 else:
      print("same")
+
+print("#################")
+# 配列の全探索 1
+# 整数 N, V と、N 個の整数 Aが与えられます。
+# N 個の整数の中に、整数 V があるかどうかを判定するプログラムを作成してください。
+# N V
+# A0~An-1
+# 入力例 1
+# 5 1
+# 3 5 1 9 2
+# Yes
+N, V = map(int, input().split()) # 分割するときはmap+split
+A = list(map(int, input().split())) # 複数は更にlist化
+flag = False  # flagの初期設定
+for num in A:
+    if V == num:
+        flag = True  # 存在すればtrueで設定する
+
+if flag:  # flagが存在する時
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 配列の全探索 2
+# 整数 N, V と、N 個の整数 Aが与えられます。
+# N 個の整数の中に整数 V が何個あるかを数えるプログラムを作成してください。
+
+N, V = map(int, input().split())
+A = list(map(int, input().split()))
+
+size = 0
+for i in A:
+    if i == V:
+        size += 1
+print(size)
+
+print("#################")
+# 配列の全探索 3
+# N 個の整数 Aが与えられます。
+# N 個の整数のうち、正の整数が何個あるかを数えるプログラムを作成してください。
+N = int(input())
+A = list(map(int, input().split()))
+count = 0
+for i in A:
+    if i > 0:
+        count += 1
+print(count)
