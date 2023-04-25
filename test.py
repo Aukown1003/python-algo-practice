@@ -394,3 +394,50 @@ for i in A:
     if i > 0:
         count += 1
 print(count)
+
+print("#################")
+# 配列の全探索 4
+# N 個の整数 A
+# N 個の整数の中で 最も右にある V は前から何番目にあるかを調べるプログラムを作成してください。
+# ただし、V が存在しない場合はそのことを報告してください。
+N, V = map(int, input().split())
+A = list(map(int, input().split()))
+ans = -1
+# (0..4).each do のpython版
+for num in range(N):
+    if A[num] == V:
+        ans = num
+print(ans)
+
+print("#################")
+# 配列の全探索 5
+# N 個の整数 A
+# 次の条件を満たす i の個数を調べるプログラムを作成してください。
+# i は1以上n-1以下
+# AiはAi-1よりも大きい
+
+N = int(input())
+A = list(map(int, input().split()))
+count = 0
+for i in range(1,N):
+    if A[i-1] < A[i]:
+        count += 1
+
+print(count)
+
+print("#################")
+# 配列の全探索 6
+# N 個の整数 A
+# N 個の整数の最大値を求めるプログラムを作成してください。
+N = int(input())
+A = list(map(int, input().split()))
+max(A)
+# 線形探索
+
+maxnum = A[0]
+for x in A:
+    if x > maxnum:
+        maxnum = x
+
+# 答えを出力する
+print(maxnum)
