@@ -441,3 +441,63 @@ for x in A:
 
 # 答えを出力する
 print(maxnum)
+
+print("#################")
+# 配列の全探索 7
+# N 個の互いに相異なる整数 A0 ~ AN-1
+# N 個の整数の中で一番大きいものは前から何番目にあるかを調べるプログラムを作成してください。
+# ただし、N 個の整数のうちの先頭の整数 A 0は、前から 0 番目であると考えることとします。
+
+N = int(input())
+A = list(map(int, input().split()))
+
+# 線形探索
+index = 0
+for i in range(N):
+    if A[i] > A[index]:
+        index = i
+
+# 答えを出力する
+print(index)
+
+print("#################")
+# 配列の全探索 8
+N = int(input())
+A = list(map(int, input().split()))
+
+index = 0
+for i in A:
+    if i < index:
+        index = i
+print(index)
+# もしくは
+print(min(A))
+
+print("#################")
+# 配列の全探索 9
+N = int(input())
+A = list(map(int, input().split()))
+
+count = [0] * 9
+for x in A:
+    count[x-1] += 1
+
+for x in count:
+    print(x)
+
+print("#################")
+# 配列の全探索 10
+N = int(input())
+A = list(map(int, input().split()))
+
+count = [0] * 9
+for x in A:
+    count[x-1] += 1
+
+index = 0
+for i in range(9):
+    if count[i] > count[index]:
+        index = i
+
+ans = index + 1
+print(ans)
