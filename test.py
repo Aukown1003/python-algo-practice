@@ -552,9 +552,40 @@ N = int(input())
 ans = "Yes"
 if N <= 1:
     ans = "No"
-for i in range(2,N):
-    if N % i == 0:
-        ans = "No"
+else:
+    for i in range(2,N):
+        if N % i == 0:
+            ans = "No"
 print(ans)
 
 print("#################")
+# 数値の全探索 4
+# 整数 A と B の最大公約数を出力するプログラムを作成してください。
+# ただし次の条件を満たすとき「 X は A と B の最大公約数である」と言います。
+# 条件：X は A も B も割り切る 1 以上の整数の中で最大のものである
+
+A, B = map(int, input().split())
+num = []
+for i in range(1, min(A,B)+1):
+    if A % i == 0 and B % i == 0:
+        num.append(i)
+print(max(num))
+
+print("#################")
+# 数値の全探索 5
+# 正の整数 N が与えられます。 1 以上 N 以下の整数 i について、次の問題に答えてください。
+# i が 3 でも 5 でも割り切れるならば FizzBuzz を出力し、
+# それ以外で i が 3 で割り切れるならば Fizz を出力し、
+# それ以外で i が 5 で割り切れるならば Buzz を出力し、
+# i がどちらでも割り切れないならば i 自身を出力してください
+
+N = int(input())
+for i in range(1, N+1):
+    if i % 15 == 0:
+        print("FizzBuzz")
+    elif i % 5 == 0:
+        print("Buzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    else:
+        print(i)
