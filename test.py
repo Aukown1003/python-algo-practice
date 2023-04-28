@@ -501,3 +501,60 @@ for i in range(9):
 
 ans = index + 1
 print(ans)
+
+print("#################")
+# 例題
+# x以上y未満の整数iを順に調べる処理は次のように書きます。
+# 入力を受け取る
+N = int(input())
+
+# count に 0 を代入する
+count = 0
+
+# i に 1 から N までの数を順番に代入する
+for i in range(1,N+1):
+    # i が 2 で割り切れるなら count に 1 を足す
+    if i%2==0:
+        count += 1
+
+# count の値を出力する
+print(count)
+
+print("#################")
+# 数値の全探索 1
+# 1 以上 N 以下の整数のうち、 2 でも 3 でも 5 でも割り切れない数の個数を数えるプログラムを作成してください。
+N = int(input())
+count = 0
+for i in range(1, N+1):
+    if i%2 != 0 and i%3 != 0 and i%5 != 0:
+        count += 1
+print(count)
+
+print("#################")
+# 数値の全探索 2
+# N の約数の個数を数えるプログラムを作成してください。
+# ただし N の約数とは「 N を割り切ることのできる 1 以上の整数」のことです。
+N = int(input())
+count = 0
+for i in range(1,N+1):
+    if N % i == 0:
+        count += 1
+print(count)
+
+print("#################")
+# 数値の全探索 3
+# 整数 N が素数かどうかを判定するプログラムを作成してください。
+# ただし次の条件を満たすとき「 N は素数である」と言います。
+# N は 2 以上の整数である
+# N を割り切ることのできる 1 より大きい整数は N のみである
+
+N = int(input())
+ans = "Yes"
+if N <= 1:
+    ans = "No"
+for i in range(2,N):
+    if N % i == 0:
+        ans = "No"
+print(ans)
+
+print("#################")
