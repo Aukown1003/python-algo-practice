@@ -589,3 +589,93 @@ for i in range(1, N+1):
         print("Fizz")
     else:
         print(i)
+
+print("#################")
+# 文字列の全探索 1
+# S という文字列に文字cが含まれているかどうかを判定してください。
+
+S = str(input())
+c = str(input())
+# 文字数の取得
+size = len(S)
+flag = False
+for i in range(size):
+    if S[i] == c:
+        flag = True
+if flag:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 文字列の全探索 2
+# 英小文字からなる文字列 S が与えられます。
+# 文字列 S が回文かどうかを判定するプログラムを作成してください。 なお文字列 S が回文であるとは、S を逆から読んでも S になることを言います。
+S = input()
+size = len(S)
+flag = "Yes"
+for i in range(size):
+    if S[i] != S[(size - 1) - i]:
+        flag = "No"
+        break
+
+print(flag)
+
+print("#################")
+# 文字列の全探索 3
+# 英小文字からなる文字列 S が与えられます。
+# 文字列 S 中に「連続する 2 文字が同じ文字である箇所」が何個あるかを答えるプログラムを作成してください。
+S = input()
+size = len(S)
+count = 0
+# sizeのままだと最後の参照先が存在しないので-1してif内で+1して整合性を保つ
+for i in range(size - 1):
+    if S[i] == S[i + 1]:
+        count += 1
+print(count)
+
+print("#################")
+# 文字列の全探索 4
+# 英小文字からなる長さ N の文字列 S, T が与えられます。
+# 文字列 S の何文字かを書き換えることで、文字列 T に一致させたいものとします。 置き換える必要のある文字数を答えるプログラムを作成してください。
+N = int(input())
+S = input()
+T = input()
+count = 0
+for i in range(N):
+    if S[i] != T[i]:
+        count += 1
+print(count)
+
+print("#################")
+# 文字列の全探索 5
+# 英小文字からなる文字列 S (長い) と T (短い) が与えられます。
+# 文字列 S の中に、文字列 T が含まれるかどうかを判定してください。 たとえば、次の通りです。
+# algomethod は go を含みます
+# algomethod は met を含みます
+# algomethod は ago を含みません (l が挟まっています)
+S = input()
+T = input()
+if T in S:
+    print("Yes")
+else:
+    print("No")
+
+# 以下正解例
+# データを受け取る
+S = input()
+T = input()
+
+# S, T の長さを取得する
+N = len(S)
+M = len(T)
+
+# 線形探索 (0 から N-M まで)
+flag = False
+for i in range(N-M+1):
+    if S[i:i+M] == T:
+        flag = True
+
+# 答えを出力する
+if flag: print("Yes")
+else: print("No")
