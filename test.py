@@ -679,3 +679,114 @@ for i in range(N-M+1):
 # 答えを出力する
 if flag: print("Yes")
 else: print("No")
+
+print("#################")
+# 二重ループの全探索 1
+# N 個の整数A0 ~ An-1
+# N 個の整数の中に素数がいくつあるか調べるプログラムを作成してください。
+
+N = int(input())
+A = list(map(int, input().split()))
+count = 0
+for x in A:
+    flag = True
+    if x == 1:
+        flag = False
+    else:
+        for i in range(2,x):
+            if x % i == 0:
+                flag = False
+        if flag:
+            count += 1
+print(count)
+
+print("#################")
+# 二重ループの全探索 2
+# 1 以上の整数 N, K が与えられます。
+# 1 以上 N 以下の整数の中で約数をちょうど K 個持つ数の個数を調べるプログラムを作成してください。
+N, K = map(int, input().split())
+count = 0 #回答用の個数の変数
+for x in range(1,N+1):
+    print(str(x)+"の探索")
+    yaku = 0 #1とその値自身の約数分
+    for i in range(1,x+1):
+        if x % i == 0:
+            yaku += 1
+            print(str(x) + "÷"+ str(i) + "は約数！")
+        else:
+            print(str(x) + "÷"+ str(i))
+    print(str(i) + "の約数は" + str(yaku) + "個")
+    if yaku == K:
+        count += 1
+print(count)
+
+print("#################")
+# 二重ループの全探索 3
+# 整数 X を文字列としてみると回文になっているとき、「X は回文数である」と呼ぶことにします。
+# 整数 L, R が与えられるので、L 以上 R 以下の整数の中に回文数がいくつあるか数えるプログラムを作成してください。
+L, R = map(int, input().split())
+count = 0
+for i in range(L,R+1):
+    print("探査している値 = " + str(i))
+    S = str(i)
+    flag = True
+    N = len(S)
+    for i in range(N):
+        if S[i] != S[(N-1)-i]:
+            flag = False
+    if flag:
+        count += 1
+
+print(count)
+
+print("#################")
+# 二重ループの全探索 4
+# 英小文字からなる文字列 S が与えられます。
+# 文字列 S に使われている英小文字の種類数を答えるプログラムを作成してください。
+S = input()
+length = len(S)
+count = 0
+for i in range(length):
+    if S[i] in S[i+1:]:
+        f = 1
+    else:
+        count += 1
+print(count)
+
+# データを受け取る
+S = input()
+N = len(S)
+
+# 文字の全探索
+count = 0
+for x in range(ord('a'), ord('z')+1):
+    c = chr(x)
+    # S に c が含まれるかを調べる
+    flag = False
+    for i in range(N):
+        if S[i] == c:
+            flag = True
+    # S に c が含まれるならば 1 を足す
+    if flag:
+        count += 1
+
+# 答えを出力する
+print(count)
+
+print("#################")
+# 二重ループの全探索 5
+# 英小文字からなる N個の文字列S0 ~ Sn-1
+# N 個の文字列のうち回文の個数を数えるプログラムを作成してください。
+N = int(input())
+S = [input() for _ in range(N)] # 縦に受け取る場合はこう書く
+count = 0
+for x in S:
+    flag = True
+    N = len(x)
+    for i in range(N):
+        if x[i] != x[(N-1)-i]:
+            flag = False
+    if flag:
+        count += 1
+
+print(count)
