@@ -790,3 +790,69 @@ for x in S:
         count += 1
 
 print(count)
+
+print("#################")
+# 複数の配列の全探索 1
+# N 個の整数 A0~ An-1 と M 個の整数 B0 ~ Bn-1
+# 次の条件を満たす組 (i,j) の個数を答えるプログラムを作成してください。
+# i は 0 以上 N−1 以下の整数
+# j は 0 以上 M−1 以下の整数
+# A i>B j
+
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+count = 0
+for x in A:
+    for y in B:
+       if x > y:
+           count += 1
+
+print(count)
+
+print("#################")
+# 複数の配列の全探索 2
+# N 個の整数 A0~ An-1 と K 個の整数 B0 ~ Bn-1
+# 次の条件を満たす組 (i,j) の個数を答えるプログラムを作成してください。
+# i は 0 以上 N−1 以下の整数
+# j は 0 以上 M−1 以下の整数
+# Ai + Bj = K
+
+# データを受け取る
+N, M, K = map(int, input().split())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+count = 0
+for a in A:
+    for b in B:
+       if a + b == K:
+           count += 1
+
+print(count)
+
+print("#################")
+# 複数の配列の全探索 3
+# X 個の整数 A0~ An-1 と Y 個の整数 B0 ~ Bn-1 と　Z 個の整数 C0 ~ Cn-1
+# 次の条件を満たす組 (i,j,k) の個数を答えるプログラムを作成してください。
+# i は 0 以上 X−1 以下の整数
+# j は 0 以上 Y−1 以下の整数
+# k は 0 以上 Z−1 以下の整数
+# Ai +Bj =Ck
+
+X, Y, Z = map(int, input().split())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+C = list(map(int, input().split()))
+
+count = 0
+for x in A:
+    for y in B:
+        for z in C:
+            if x + y == z:
+                count += 1
+
+print(count)
+
+
