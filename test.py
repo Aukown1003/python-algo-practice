@@ -855,4 +855,53 @@ for x in A:
 
 print(count)
 
+print("#################")
+# ペアの全探索 1
+# N 個の整数 A0~An-1,と整数 K が与えられます。
+# これらの N 個の整数から、和が K 以下となるように 2 つの数を選ぶ方法は何通りあるか求めるプログラムを作成してください。
+# ただし選んだ 2 つの整数の添字 (Ai の i) が等しくなってはいけないものとします。
 
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+
+count = 0
+for i in range(N):
+    for j in range(i+1,N):
+        if A[i] + A[j] <= K:
+            count += 1
+
+print(count)
+
+
+print("#################")
+# ペアの全探索 2
+# 2 つの整数 L,R が与えられます。
+# L 以上 R 以下の整数の中から、 一の位が等しくなるように相異なる 2 つの整数を選ぶ方法は何通りあるか求めるプログラムを作成してください。
+
+L, R = map(int, input().split())
+
+count = 0
+for i in range(L,R+1):
+    for j in range(i+1,R+1):
+        if i % 10 == j % 10:
+            count += 1
+
+print(count)
+
+print("#################")
+# ペアの全探索 3
+# N 個の整数 A0~ An-1
+# 以下の条件をみたす整数の組 (i,j,k) の個数を求めるプログラムを作成してください。
+# Ai,Aj,Akの最大値は Ajである。
+# 0≤i<j<k≤N−1
+
+N = int(input())
+A = list(map(int, input().split()))
+
+ans = 0
+for i in range(N):
+    for j in range(i + 1, N):
+        for k in range(j + 1, N):
+            if A[j] == max(A[i], A[j], A[k]):
+                ans += 1
+print(ans)
