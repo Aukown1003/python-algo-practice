@@ -905,3 +905,39 @@ for i in range(N):
             if A[j] == max(A[i], A[j], A[k]):
                 ans += 1
 print(ans)
+
+print("#################")
+# ペアの全探索 4
+# N 個の文字列 S0~Sn-1
+# これらの N 個の文字列の中に同じ 2 つの文字列があるかどうかを判定するプログラムを作成してください。
+
+N = int(input())
+S = [input().split() for _ in range(N)]
+
+flag = "No"
+for i in range(N):
+    for j in range(i+1,N):
+        if S[i] == S[j]:
+            flag = "Yes"
+
+print(flag)
+
+print("#################")
+# ペアの全探索 5
+# 長さ N の文字列 S が与えられます。
+# 以下の条件をみたす整数の組 (x,y) の個数を数えるプログラムを作成してください。
+#
+# S の x 文字目と y 文字目は等しい
+# 0≤x<y≤N−1
+# ただし、S の先頭の文字が 0 文字目であるとします。
+
+N = int(input())
+S = input()
+
+count = 0
+for i in range(N):
+    for j in range(i+1,N):
+        if S[i] == S[j]:
+            count += 1
+
+print(count)
