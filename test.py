@@ -1034,3 +1034,56 @@ for i in range(30):
 print(ans // 60, ans % 60)
 
 print("#################")
+# 注文
+# カメのアルルは近所のお店で外食をしています。 このお店には、N 個のメニューがあり、それぞれメニュー名はF0 Fn-1
+# またメニューFi Ci円です。
+# アルルはこのお店で、M 個のメニュー (それぞれのメニュー名は X0 Xm-1)を注文しました。
+# アルルが注文したメニューの合計金額を計算するプログラムを作成してください。
+N, M = map(int, input().split())
+
+menu = {}
+for _ in range(N):
+    F, C = input().split()
+    menu[F] = int(C)
+
+X = list(input().split())
+
+ans = 0
+for item in X:
+    ans += menu[item]
+print(ans)
+
+print("#################")
+# 約分
+# 与えられた分数を既約分数(これ以上約分できない形)に変換するプログラムを作成してください
+# 例えば、 2/6 という分数を入力すると 1/3 を出力するプログラムを作成してください。
+def GCD(A, B):
+    if B == 0: return A
+    else: return GCD(B, A % B)
+
+S = input()
+for i in range (len(S)):
+    if S[i] == "/":
+        n0 = int(S[0 : i])
+        d0 = int(S[i + 1 : ])
+
+g = GCD(n0, d0)
+n1 = n0 // g
+d1 = d0 // g
+print("%d/%d" % (n1, d1))
+
+print("#################")
+# アイスの棒
+# カメのアルルはお店にアイスを買いにきました。 このアイスは食べ終わった M 本の棒をまとめてお店に持っていくと、 新たなアイス 1 本に無料で引き換えてもらえます。
+# アルルが N 本のアイスを買うとき、最大で何本のアイスを食べることができますか。 ただし、アルルははじめアイスの棒を 1 本も持っていません。
+
+N, M = map(int, input().split())
+
+now = N
+loop = 0
+while now >= M:
+    now -= M
+    now += 1
+    loop += 1
+
+print(N + loop)
