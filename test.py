@@ -1229,3 +1229,53 @@ if search:
     print("Yes")
 else:
     print("No")
+
+print("#################")
+# 正規表現 2-1
+# 文字列 S が与えられます。
+# 文字列 S が 1+1 という文字列を含むか判定するプログラムを作成してください。
+
+import re
+
+S = input()
+reg = r'1\+1'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 正規表現 2-2
+# 文字列 S が与えられます。
+# 文字列 S に括弧書きが含まれるか判定するプログラムを作成してください。
+# ただし、括弧書きは「 ( と ) で挟まれた 1 文字以上の文字列 」のこととします。
+
+import re
+
+S = input()
+reg = r'\(.+\)'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 正規表現 2-3
+# 文字列 S が与えられます。
+# 文字列 S が 英文として成立しているか判定するプログラムを作成してください。
+# ただし、以下の条件をみたすとき「英文として成立している」とします。
+
+import re
+
+S = input()
+reg = r'^([a-z]+\-)*[a-z]+$'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
