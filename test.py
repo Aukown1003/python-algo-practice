@@ -1140,3 +1140,92 @@ M = 0
 for item in A:
     M = max(M, item)
     print(M)
+
+print("#################")
+# 累積最大値個数
+# N 個の正の整数からなる数列 A0 ~ AN-1
+# i=1,2,…,N に対して、次の問に答えてください。
+# 数列 A の先頭からi 項について「最大値の個数」を求めてください。
+# Mi = max(A0~ Ai-1)としたとき、A0~Ai-1の中にMiが何個有るのか
+# 入力データを受け取る
+N = int(input())
+A = list(map(int, input().split()))
+
+# 答えを求める途中経過を表す変数
+max_value = 0;  # 最大値
+max_num = 0;  # 最大値の個数
+
+# 最大値の個数を求める途中経過を出力していく
+for item in A:
+    # 数が最大値のとき、個数を 1 増やす
+    if item == max_value:
+        max_num += 1
+
+    # 最大値を更新するときは、個数を 1 にリセットする
+    if item > max_value:
+        max_value = item
+        max_num = 1
+
+    # 出力する
+    print(max_num)
+
+print("#################")
+# 正規表現 1-1
+# 文字列 S が与えられます。
+# 文字列 S が algo という文字列を含むか判定するプログラムを作成してください。
+
+import re
+
+S = input()
+reg = r'algo'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 正規表現 1-2
+# 文字列Sが与えられます。
+# 文字列Sが以下の形式を満たすか判定するプログラムを作成してください。
+import re
+
+S = input()
+reg = r'^metho+d$'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 正規表現 1-3
+# 文字列 S が与えられます。
+# 文字列 S が以下の形式を満たすか判定するプログラムを作成してください。
+import re
+
+S = input()
+reg = r'^a{1,5}b{10}c*$'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 正規表現 1-4
+# 文字列 S が与えられます。
+# 文字列 S が cat または dog という文字列を含むか判定するプログラムを作成してください。
+import re
+
+S = input()
+reg = r'cat|dog'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
