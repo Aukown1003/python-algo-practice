@@ -1279,3 +1279,64 @@ if search:
     print("Yes")
 else:
     print("No")
+
+print("#################")
+# 正規表現 3-1
+# 文字列 S が与えられます。
+# 文字列 S が数字を含むか判定するプログラムを作成してください。
+import re
+
+S = input()
+reg = r'\d'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 正規表現 3-2
+# 文字列 S が与えられます。
+# 文字列 S が位置が連続する 3 文字以上の数字を含むか判定するプログラムを作成してください。
+import re
+
+S = input()
+reg = r'\d{3,}'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 正規表現 3-3
+# 文字列 S が与えられます。
+# 文字列 S が以下の形式を満たすか判定するプログラムを作成してください。
+# (数字が 3 つ) - (数字が 4 つ)
+import re
+S = input()
+reg = r'^\d{3}\-\d{4}$'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 正規表現 3-4
+# 文字列 S が与えられます。
+# 文字列 S が以下の形式を満たすか判定するプログラムを作成してください。
+# (1 文字以上の半角英数字)@ (1 文字以上の半角英数字). (1 文字以上4 文字以下の半角英数字)
+import re
+
+S = input()
+reg = r'^\w+\@\w+\.\w{1,4}$'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
