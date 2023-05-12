@@ -1340,3 +1340,52 @@ if search:
     print("Yes")
 else:
     print("No")
+
+print("#################")
+# 正規表現 4-1
+# 英小文字のみからなる文字列 S が与えられます。
+# 文字列 S のうち、r に挟まれた(両隣の文字が r である) u を a に置換するプログラムを作成してください。
+import re
+
+S = input()
+
+print(re.sub(r'ru(?=r)', 'ra', S))
+
+print("#################")
+# 正規表現 4-2
+# 空白区切りの複数単語からなる英文字列 S が与えられます。
+# 文字列 S の中にある asian という単語のあとに 5 単語以上が続くならば、その asian を global に置き換えた文字列を出力してください。
+import re
+
+S = input()
+
+print(re.sub(r'asian(?=( [a-z]+){5,})', 'global', S))
+
+print("#################")
+# 正規表現 4-3
+# 英小文字のみからなる文字列 S が与えられます。
+# 文字列 S のなかに、algo のあとに来るのが rithm でも method でもないような、algo + 5 文字以上の文字からなる部分文字列が含まれているかを答えてください。
+import re
+
+S = input()
+reg = r'algo(?!method)(?!rithm)[a-z]{5,}'
+
+search = re.search(reg, S)
+if search:
+    print("Yes")
+else:
+    print("No")
+
+print("#################")
+# 正規表現 4-4
+# カメのアルルは確定申告に備えて、すべての領収書を次のようなタイトルで保存しています。
+# 整理番号_領収書名_YYYYMMDD.pdf
+# アルルに代わって、大量の領収書の中からある年ある月のレシートの領収署名を抽出してください。
+# ※ ここで、「YYYYMMDD」は西暦 4 桁の年・2 桁の月・2 桁の日の合計 8 桁からなる、ある特定の日付を表す数字列のことです。
+import re
+n, y, m = map(int,input().split())
+for _ in range(n):
+	s = input()
+	match_obj = re.search(r'[^_]+(?=_' + str(y).zfill(4) + str(m).zfill(2) + '\d{2}\.pdf)', s)
+	if match_obj:
+		print(match_obj.group(0))
