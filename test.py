@@ -1583,3 +1583,65 @@ SELECT
     ) AS "地方名"
 FROM
     prefectures;
+
+print("#################")
+# 3-1. 2番目に大きい都道府県
+# 日本で一番大きい都道府県は北海道ですが、その次に大きい都道府県はどこでしょう。
+# 都道府県の情報が格納されている、 prefectures テーブルのみをもつデータベースが与えられます。
+# prefectures テーブルに含まれるデータから、面積が 2 番目に大きい都道府県のデータを表示するクエリを作成してください。
+SELECT
+    *
+FROM
+    prefectures
+ORDER BY
+    area DESC
+LIMIT 1 OFFSET 1;
+
+print("#################")
+# 3-2. 内陸県
+# 都道府県の情報が格納されている、 prefectures テーブルのみをもつデータベースがあります。
+# 回答欄に用意されたクエリを完成させ、内陸県のデータを面積が大きい順に表示してください。
+# ただし、内陸県とは海に面していない都道府県を指し、具体的には次の 8 つが当てはまります。
+# 栃木県, 群馬県, 埼玉県, 山梨県
+# 長野県, 岐阜県, 滋賀県, 奈良県
+
+WITH
+    inland_prefectures
+AS (
+    -- ここに適切なクエリを記述してください
+    SELECT *
+    FROM prefectures
+    WHERE name IN (
+        '栃木県', '群馬県', '埼玉県', '山梨県',
+        '長野県', '岐阜県', '滋賀県', '奈良県'
+    )
+)
+
+SELECT
+    *
+FROM
+    inland_prefectures
+ORDER BY
+    area DESC;
+
+print("#################")
+# 3-3. 試験評価
+# ある学校の期末成績情報が格納されている、 grades テーブルのみをもつデータベースが与えられます。
+# この学校では各々の成績に対して、点数に応じて次のような 5 段階の「評価」が付けられます。
+# 点数	90～100	80～89	65～79	50～64	0～49
+# 評価	秀	優	良	可	不可
+
+SELECT
+    id,
+    name,
+    subject,
+    score,
+    CASE
+        WHEN score BETWEEN 90 AND 100 THEN '秀'
+        WHEN score BETWEEN 80 AND 89 THEN '優'
+        WHEN score BETWEEN 65 AND 79 THEN '良'
+        WHEN score BETWEEN 50 AND 64 THEN '可'
+        ELSE '不可'
+    END AS '評価'
+FROM
+    grades;
