@@ -1645,3 +1645,78 @@ SELECT
     END AS '評価'
 FROM
     grades;
+
+print("#################")
+# 3-4. 年齢3区分
+# 年齢別の人口構造を端的に表す指標として、 0 から 14 歳を「年少人口」、15 から 64 歳を「生産年齢人口」、 65 歳以上を「老年人口」と区分する 年齢3区分 があります。
+# いま、年齢 1 歳ごとの日本の人口を表す population テーブルが与えられます。 この年齢3区分に当てはまる人口がそれぞれ何人か、集計して表示するクエリを作成してください。
+# ただし、年齢3区分が格納されるカラム名を「年齢3区分」、各区分の人口が格納されるカラム名を「総人口」としてください。 また、表示結果において年齢3区分が表示される順序は問わないものとします。
+
+SELECT
+    CASE
+        WHEN age BETWEEN 0 AND 14 THEN '年少人口'
+        WHEN age BETWEEN 15 AND 64 THEN '生産年齢人口'
+        ELSE '老年人口'
+    END AS '年齢3区分',
+    SUM(total) AS '総人口'
+FROM
+    population
+GROUP BY `年齢3区分`;
+
+print("#################")
+# 3-5. 家計簿の分析
+# カメのアルルは、支出額を管理するために日常的に家計簿を付けています。
+# ある年の 4, 5, 6 月の家計簿データが、それぞれ expenses_april, expenses_may, expenses_june テーブルとして与えられます。
+# これら 3 ヶ月間の支出額をカテゴリごとに合計して、支出額の多いカテゴリから順番に表示するクエリを作成してください。
+# ただし、カテゴリ名と、カテゴリごとの支出額の合計を表示するカラム名はそれぞれ「カテゴリ」「支出額」としてください。
+
+WITH expenses AS (
+    SELECT * FROM expenses_april
+    UNION ALL
+    SELECT * FROM expenses_may
+    UNION ALL
+    SELECT * FROM expenses_june
+)
+SELECT
+    category AS 'カテゴリ',
+    SUM(amount) AS '支出額'
+FROM
+    expenses
+GROUP BY
+    category
+ORDER BY
+    `支出額` DESC;
+
+print("#################")
+# 3-6. 参加者名簿
+# カメのアルルは 3 日間開催されるイベントに参加しました。 このイベントは各日出し物が異なるため、参加者は興味にあわせて出し物ごとに参加登録をします。
+# このイベントの 1 日目 から 3 日目の参加登録情報が、それぞれ registrations_day1, registrations_day2, registrations_day3 テーブルとして与えられます。
+# イベントに 3 日とも登録した参加者のメールアドレスを全て取得して表示するクエリを作成してください。
+# ただし、このメールアドレスが格納されるカラムのカラム名は email としてください。
+SELECT email FROM registrations_day1
+INTERSECT
+SELECT email FROM registrations_day2
+INTERSECT
+SELECT email FROM registrations_day3;
+
+print("#################")
+# 3-7. 景品の対象者
+# カメのアルルたちは一定期間内に様々な課題に挑戦できる、インターネット上のイベントに参加しました。 このイベントでは、参加者ごとに挑戦した課題の合計点が集計され、その合計点が高い 10 名に景品が授与されます。
+# このイベントにおける課題の挑戦結果が results テーブルに与えられます。
+# また、一部の挑戦結果を集計に使わないで欲しいと参加者が申し出ています。このオプトアウト情報が optout テーブルに与えられます。 optout テーブルの email, game_id, score の組は、それと同じ組を持つレコードが results テーブルに存在することが保証されます。(id は異なる可能性があります。)
+# これらのテーブルから、集計対象の結果のみをもとにして合計点を集計し、 景品授与対象 (合計点の上位 10 名) のメールアドレスを取得して表示するクエリを作成してください。
+# ただし、このメールアドレスが格納されるカラムのカラム名は email としてください。
+WITH ranked_results AS (
+    SELECT email, game_id, score FROM results
+    EXCEPT
+    SELECT email, game_id, score FROM optout
+)
+SELECT
+    email
+FROM
+    ranked_results
+GROUP BY
+    email
+ORDER BY
+    SUM(score) DESC
+LIMIT 10;
